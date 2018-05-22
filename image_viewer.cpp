@@ -113,6 +113,12 @@ wimage_mirror::wimage_mirror (QScrollArea * sa)
 {
   arrows[0] = QPixmap (tr(":/res/images/left-arrow.png" ));
   arrows[1] = QPixmap (tr(":/res/images/right-arrow.png"));
+  set_image(tr(":/res/images/example.jpg"));
+  mrc.set_center(QPoint(407,225));
+  mrc.set_angle(qDegreesToRadians(21.6309));
+  mrc.set_radius(183);
+
+
 }
 
 void wimage_mirror::paintEvent(QPaintEvent * pv)

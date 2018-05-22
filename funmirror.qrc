@@ -10,5 +10,6 @@
         <file>images/funmirror1.ico</file>
         <file>images/left-arrow.png</file>
         <file>images/right-arrow.png</file>
+        <file>images/example.jpg</file>
     </qresource>
 </RCC>

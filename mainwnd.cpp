@@ -44,6 +44,7 @@ void MainWnd::create_controls()
  sb->setSizeGripEnabled(true);
  setStatusBar(sb);
  statusBar()->showMessage(tr("Мышью выделить участок.Курсор на стрелке - вращение заркала. Внутри участка - перемещение.+Shift - размер"),0);
+
 }
 
 void MainWnd::create_actions ()
@@ -71,6 +72,8 @@ void MainWnd::resizeEvent(QResizeEvent * evt)
    Qt::Orientation new_orient = width()> height() ?  Qt::Horizontal : Qt::Vertical;
    if(new_orient != splitter->orientation())
       splitter->setOrientation(new_orient);
+   if(img_viewer->get_pixmap().isNull() && img_mirror->get_radius())
+      on_image_changed();
 }
 
 void MainWnd::open_image()
@@ -78,20 +81,26 @@ void MainWnd::open_image()
    QString fileName = QFileDialog::getOpenFileName(this,
          tr("Open Image"), "", tr("Image Files (*.png *.jpg *.bmp)"));
    if(!fileName.isEmpty())
-    img_mirror->set_image(fileName);
+      img_mirror->set_image(fileName);
 }
 
 void MainWnd::on_image_changed()
 {
-  QPixmap pm = img_mirror->get_mirrored_pixmap();
-  int angle = img_mirror->get_angle();
-
+  QPixmap pm     = img_mirror->get_mirrored_pixmap();
+ if(!pm.isNull())
+ {
+   double  angle  = img_mirror->get_angle();
+//  QPoint  centr  = img_mirror->get_centr();
+//  int     radius = img_mirror->get_radius();
+//  QString str = QString("centr %1.%2 radius %3 angle %4").arg(centr.x()).arg(centr.y()).arg(radius).arg(angle);
+//  statusBar()->showMessage(str,2000);
   if(qAbs(angle)>90)
   {
     QTransform trm = QTransform().rotate(180);
     pm = pm.transformed(trm);
   }
   img_viewer->set_pixmap(pm);
+ }
 }
 
 void MainWnd::save_mirrored_image()

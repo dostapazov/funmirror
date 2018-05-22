@@ -83,7 +83,11 @@ class wimage_mirror : public wimage_viewer
  public:
               wimage_mirror(QScrollArea *sa);
       QPixmap get_mirrored_pixmap();
-      int     get_angle(){return qRound(qRadiansToDegrees(mrc.get_angle()));}
+      double  get_angle (){return qRadiansToDegrees(mrc.get_angle());}
+      QPoint  get_centr (){return mrc.get_centr ();}
+      int     get_radius(){return mrc.get_radius();}
+
+
 public  Q_SLOTS :
       void    toggle_mirror(){right_mirror = !right_mirror; update(); emit on_change();}
 
