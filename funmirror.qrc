@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>images/exit.png</file>
+        <file>images/open_image32.png</file>
+        <file>images/Zoom-Original.png</file>
+        <file>images/zoom-in.png</file>
+        <file>images/zoom-out.png</file>
+        <file>images/flip-vertical.png</file>
+        <file>images/save_image.png</file>
+        <file>images/funmirror1.ico</file>
+        <file>images/left-arrow.png</file>
+        <file>images/right-arrow.png</file>
+    </qresource>
+</RCC>
