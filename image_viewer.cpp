@@ -12,8 +12,16 @@ wimage_viewer::wimage_viewer(QScrollArea *sa)
  setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
 }
 
+cv::Mat qimage_to_mat_cpy(QImage const &img, int format)
+{
+    return cv::Mat(img.height(), img.width(), format,
+                   const_cast<uchar*>(img.bits()),
+                   size_t(img.bytesPerLine())).clone();
+}
+
 void wimage_viewer::set_image(const QString image_path)
 {
+
     QImageReader reader(image_path);
     reader.setAutoTransform(true);
     const QImage newImage = reader.read();
