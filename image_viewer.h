@@ -19,7 +19,7 @@ protected:
           void set_zoom_factor (double factor);
 public:
     wimage_viewer(QScrollArea * sa);
-    void set_image  (const QString image_path);
+    void set_image  (const QString &image_path);
     void set_image  (const QImage & new_image);
     void set_pixmap (const QPixmap& new_pixmap);
     void make_pixmap();
